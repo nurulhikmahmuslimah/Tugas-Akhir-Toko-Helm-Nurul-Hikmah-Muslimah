@@ -1,6 +1,7 @@
 <?php
-
+use App\Http\Controllers\suppliersController;
 use App\Http\Controllers\cobaController;
+use App\Http\Controllers\ordersController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -15,14 +16,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('', [cobaController::class, 'index']);
-Route::get('/folders', [cobaController::class, 'index']);
-Route::get('/folders/create', [cobaController::class, 'create']);
-Route::post('/folders', [cobaController::class, 'store']);
-Route::get('/folders/{id}', [cobaController::class, 'show']);
-Route::get('/folders/{id}/edit', [cobaController::class, 'edit']);
-Route::put('/folders/{id}', [cobaController::class, 'update']);
-Route::delete('/folders/{id}', [cobaController::class, 'destroy']);
+Route::get('',[cobaController::class, 'index']);
+//Route::get('/suppliers', [cobaController::class, 'index']);
+//Route::get('/suppliers/create', [cobaController::class, 'create']);
+//Route::post('/suppliers', [cobaController::class, 'store']);
+//Route::get('/suppliers/{id}', [cobaController::class,'show']);
+//Route::get('/suppliers/{id}/edit', [cobaController::class,'edit']);
+//Route::put('/suppliers/{id}', [cobaController::class,'update']);
+//Route::delete('/suppliers/{id}', [cobaController::class,'destroy']);
 
-
-
+Route::resources([
+    'databarangs' => cobaController::class,
+    'suppliers' => suppliersController::class,
+    'orders' => ordersController::class,
+]);
+Route::get('/suppliers/addmember/{supplier}', [suppliersController::class,'addmember']);
+Route::put('/suppliers/addmember/{supplier}', [suppliersController::class,'updateaddmember']);
+Route::put('/suppliers/deleteaddmember/{supplier}', [suppliersController::class,'deleteaddmember']);

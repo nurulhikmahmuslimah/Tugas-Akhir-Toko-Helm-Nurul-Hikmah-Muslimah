@@ -10,27 +10,32 @@
 
     <title>@yield('title')</title>
   </head>
-  <body>
-
+  <body style ="background-color:WHITE;">
   <div class="container">
-
-  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
-  <a class="navbar-brand" href="/folders">D'Sign Interior</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-link" href="/folders">Folders</a>
-      <a class="nav-link" href="/katalog">katalog</a>
-      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+  <nav class="" style="background-color:white; ">
+              <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+              <h2> TOKO HELM</h2></br>
+              <li class="nav-item active">
+              <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="/databarangs">Databarang</span></a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="/suppliers">Supplier</span></a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="/orders">Order</span></a>
+              </li>
     </div>
-  </div>
-</nav>
+    </div>
+    </nav>
 
-
-<a href="/folders/create" class="card-link btn-primary">Tambah Tema</a>
   
     @yield('content')
     </div>

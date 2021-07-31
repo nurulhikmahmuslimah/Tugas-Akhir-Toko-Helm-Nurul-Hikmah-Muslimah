@@ -1,73 +1,78 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\folders;
+use App\Models\databarangs;
 use Illuminate\Http\Request;
 
-class Cobacontroller extends Controller
+class cobaController extends Controller
 {
     
     public function index()
     {
-        
-        $folders = Folders::orderBy('id', 'desc')->paginate(3);
-        return view('folders.index', compact('folders'));
+        $databarangs = Databarangs::orderBy('id', 'desc')->paginate(3);
+        return view('databarangs.index', compact('databarangs'));
     }
 
     public function create()
-    {
-        
-        return view('folders.create');
+    { 
+        return view('databarangs.create');
     }
 
     public function store (Request $request)
     {
         // validate the request...
         $request->validate([
-            'Desain_Ruangan' => 'required|unique:folders|max:255',
-            'Tema_Ruangan' =>'required|numeric',
-            'Harga' => 'required',
+            'nama_barang' => 'required',
+            'jenis' =>'required',
+            'harga_jual' => 'required',
+            'harga_beli' => 'required',
+            'stok' => 'required',
         ]);
-        $folders = new Folders;
+        $databarangs = new databarangs;
         
-        $folders->Desain_Ruangan = $request->Desain_Ruangan;
-        $folders->Tema_Ruangan = $request->Tema_Ruangan;
-        $folders->Harga = $request->Harga;
+        $databarangs->nama_barang = $request->nama_barang;
+        $databarangs->jenis = $request->jenis;
+        $databarangs->harga_jual = $request->harga_jual;
+        $databarangs->harga_beli = $request->harga_beli;
+        $databarangs->stok = $request->stok;
 
-        $folders->save();
+        $databarangs->save();
 
         return redirect('/');
     }
     public function show($id)
     {
-        $folders= Folders::where('id', $id)->first();
-        return view ('folders.show', ['folder' => $folders]);
+        $databarangs= Databarangs::where('id', $id)->first();
+        return view ('databarangs.show', ['databarang' => $databarangs]);
     }
 
     public function edit($id)
     {
-        $folders= Folders::where('id', $id)->first();
-        return view ('folders.edit', ['folder' => $folders]);
+        $databarangs= Databarangs::where('id', $id)->first();
+        return view ('databarangs.edit', ['databarang' => $databarangs]);
     }
     public function update(Request $request, $id)
     {
         $request->validate([
-            'Desain_Ruangan' => 'required|unique:folders|max:255',
-            'Tema_Ruangan' =>'required|numeric',
-            'Harga' => 'required',
+            'nama_barang' => 'required',
+            'jenis' =>'required',
+            'harga_jual' => 'required',
+            'harga_beli' => 'required',
+            'stok' => 'required',
         ]);
-        Friends::find($id)->update([
-            'Desain_Ruangan' => $request->Desain_Ruangan,
-            'Tema_Ruangan' => $request->Tema_Ruangan,
-            'Harga' => $request->Harga,
+        Databarangs::find($id)->update([
+            'nama_barang' => $request->nama_barang,
+            'jenis' => $request->jenis,
+            'harga_jual' => $request->harga_jual,
+            'harga_beli' => $request->harga_beli,
+            'stok' => $request->stok,
         ]);
 
         return redirect ('/');
     }
     public function destroy($id)
     {
-        Folders::find($id)->delete();
+        Databarangs::find($id)->delete();
         return redirect ('/');
     }
 }
